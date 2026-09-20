@@ -20,15 +20,15 @@
     <circle cx="58" cy="19" r="5.5" fill="#27C93F"/>
     <text class="m ttl" x="440" y="24" fill="#8B949E" text-anchor="middle">~/top-languages</text>
     
-  <g><rect x="24.00" y="72" width="565.78" height="20" rx="0" fill="#3572A5"/><rect x="589.78" y="72" width="266.22" height="20" rx="0" fill="#F1E05A"/></g>
+  <g><rect x="24.00" y="72" width="636.57" height="20" rx="0" fill="#3572A5"/><rect x="660.57" y="72" width="195.43" height="20" rx="0" fill="#F1E05A"/></g>
   <rect x="24" y="72" width="832" height="20" rx="6" fill="none" stroke="#30363D" stroke-width="1"/><g>
     <rect x="24" y="117" width="10" height="10" rx="2.5" fill="#3572A5"/>
     <text class="m sm" x="41" y="126" fill="#C9D1D9">Python</text>
-    <text class="m sm" x="270" y="126" fill="#8B949E" text-anchor="end">68.0%</text>
+    <text class="m sm" x="270" y="126" fill="#8B949E" text-anchor="end">76.5%</text>
   </g><g>
     <rect x="302" y="117" width="10" height="10" rx="2.5" fill="#F1E05A"/>
     <text class="m sm" x="319" y="126" fill="#C9D1D9">JavaScript</text>
-    <text class="m sm" x="548" y="126" fill="#8B949E" text-anchor="end">32.0%</text>
+    <text class="m sm" x="548" y="126" fill="#8B949E" text-anchor="end">23.5%</text>
   </g>
   </g>
   <rect x="0.5" y="0.5" width="879" height="173" rx="12" fill="none" stroke="#30363D" stroke-width="1"/>

@@ -105,7 +105,7 @@ $ tail -f ~/roadmap.log
 
 <div align="center">
   <sub>
-    这个主页不是套模板 —— hero 是手写的 SVG，数据卡片由 <code>scripts/render.py</code>
+    数据卡片由 <code>scripts/render.py</code>
     每天从 GitHub API 拉真实数据重新生成。
   </sub>
 </div>

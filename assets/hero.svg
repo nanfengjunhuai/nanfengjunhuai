@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="384" viewBox="0 0 1280 384" fill="none" role="img" aria-label="nanfeng — physics and optoelectronics to math modeling and AI agents">
+  <defs>
+    <linearGradient id="nameGrad" x1="56" y1="0" x2="470" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3FB950"/>
+      <stop offset="45%" stop-color="#7EE787"/>
+      <stop offset="100%" stop-color="#2EA043"/>
+    </linearGradient>
+    <linearGradient id="accentBar" x1="16" y1="0" x2="1264" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3FB950" stop-opacity="0"/>
+      <stop offset="22%" stop-color="#3FB950" stop-opacity="0.9"/>
+      <stop offset="78%" stop-color="#2EA043" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2EA043" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.18" cy="0.42" r="0.55">
+      <stop offset="0%" stop-color="#3FB950" stop-opacity="0.20"/>
+      <stop offset="55%" stop-color="#3FB950" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#3FB950" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="windowClip">
+      <rect x="16" y="16" width="1248" height="352" rx="12"/>
+    </clipPath>
+
+    <!-- Typewriter wipe for the rotating tagline. Each phrase owns a clip rect
+         whose width grows from 0, so the text is revealed left-to-right. The
+         cursor is static at the prompt; only the command animates. -->
+    <clipPath id="type0"><rect x="76" y="320" width="0" height="36">
+      <animate attributeName="width" values="0;560;560" keyTimes="0;0.067;1" dur="15s" repeatCount="indefinite"/>
+    </rect></clipPath>
+    <clipPath id="type1"><rect x="76" y="320" width="0" height="36">
+      <animate attributeName="width" values="0;0;560;560" keyTimes="0;0.333;0.40;1" dur="15s" repeatCount="indefinite"/>
+    </rect></clipPath>
+    <clipPath id="type2"><rect x="76" y="320" width="0" height="36">
+      <animate attributeName="width" values="0;0;560;560" keyTimes="0;0.667;0.734;1" dur="15s" repeatCount="indefinite"/>
+    </rect></clipPath>
+
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace; }
+      .name { font-size: 52px; font-weight: 700; letter-spacing: 11px; }
+      .sub  { font-size: 18px; font-weight: 400; }
+      .cmd  { font-size: 16px; font-weight: 400; }
+      .ttl  { font-size: 13px; font-weight: 500; letter-spacing: 0.5px; }
+      .tag  { font-size: 17px; font-weight: 400; }
+    </style>
+  </defs>
+
+  <!-- backdrop -->
+  <rect width="1280" height="384" fill="#0D1117"/>
+  <rect width="1280" height="384" fill="url(#glow)"/>
+
+  <!-- terminal window -->
+  <rect x="16" y="16" width="1248" height="352" rx="12" fill="#0B0F14" stroke="#30363D" stroke-width="1"/>
+
+  <g clip-path="url(#windowClip)">
+    <!-- title bar -->
+    <rect x="16" y="16" width="1248" height="40" fill="#161B22"/>
+    <line x1="16" y1="56" x2="1264" y2="56" stroke="#30363D" stroke-width="1"/>
+    <rect x="16" y="16" width="1248" height="2" fill="url(#accentBar)"/>
+
+    <circle cx="46" cy="36" r="6.5" fill="#FF5F56"/>
+    <circle cx="68" cy="36" r="6.5" fill="#FFBD2E"/>
+    <circle cx="90" cy="36" r="6.5" fill="#27C93F"/>
+
+    <text class="mono ttl" x="640" y="41" fill="#8B949E" text-anchor="middle">nanfeng@github — ~/profile</text>
+    <text class="mono ttl" x="1240" y="41" fill="#484F58" text-anchor="end">zsh</text>
+  </g>
+
+  <!-- column divider -->
+  <line x1="656" y1="92" x2="656" y2="272" stroke="#21262D" stroke-width="1" stroke-dasharray="3 5"/>
+
+  <!-- ── left column ── -->
+  <text class="mono name" x="56" y="134" fill="url(#nameGrad)">NANFENG</text>
+  <line x1="58" y1="158" x2="592" y2="158" stroke="#30363D" stroke-width="1"/>
+
+  <text class="mono sub" x="56" y="196" fill="#8B949E">physics · optoelectronics</text>
+
+  <text class="mono sub" x="56" y="226" fill="#8B949E">→
+    <tspan fill="#3FB950">math modeling</tspan> ×
+    <tspan fill="#3FB950">ai agents</tspan>
+  </text>
+
+  <text class="mono" x="56" y="266" font-size="13" fill="#484F58">no frameworks — scratch first</text>
+
+  <!-- ── right column: live session ── -->
+  <text class="mono cmd" x="690" y="126">
+    <tspan fill="#3FB950">$</tspan><tspan fill="#C9D1D9"> whoami</tspan>
+  </text>
+  <text class="mono cmd" x="706" y="152" fill="#8B949E">nanfeng</text>
+
+  <text class="mono cmd" x="690" y="196">
+    <tspan fill="#3FB950">$</tspan><tspan fill="#C9D1D9"> cat /etc/motd</tspan>
+  </text>
+  <text class="mono cmd" x="706" y="222" fill="#8B949E">Not letting AI write the code for me.</text>
+
+  <text class="mono cmd" x="690" y="268">
+    <tspan fill="#3FB950">$</tspan><tspan fill="#C9D1D9"> </tspan>
+  </text>
+  <rect x="714" y="255" width="10" height="17" fill="#3FB950">
+    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.42;0.5;0.92;1" dur="1.15s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- ── bottom: rotating tagline ── -->
+  <line x1="40" y1="304" x2="1240" y2="304" stroke="#21262D" stroke-width="1"/>
+
+  <text class="mono tag" x="56" y="344" fill="#3FB950">$</text>
+
+  <g clip-path="url(#type0)">
+    <text class="mono tag" x="76" y="344" fill="#C9D1D9">physics → code, one model at a time</text>
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.30;0.335;1" dur="15s" repeatCount="indefinite"/>
+  </g>
+  <g clip-path="url(#type1)">
+    <text class="mono tag" x="76" y="344" fill="#C9D1D9">learning in public, one commit at a time</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.328;0.336;0.63;0.665;1" dur="15s" repeatCount="indefinite"/>
+  </g>
+  <g clip-path="url(#type2)">
+    <text class="mono tag" x="76" y="344" fill="#C9D1D9">build the judgment, not just the output</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.663;0.671;0.96;0.993;1" dur="15s" repeatCount="indefinite"/>
+  </g>
+</svg>

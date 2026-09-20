@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="174" viewBox="0 0 880 174" fill="none" role="img" aria-label="~/top-languages">
+  <defs>
+    <clipPath id="win"><rect x="0" y="0" width="880" height="174" rx="12"/></clipPath>
+    <style>
+      .m { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace; }
+      .lbl { font-size: 11.5px; font-weight: 600; letter-spacing: 1.6px; }
+      .val { font-size: 32px; font-weight: 700; }
+      .sm  { font-size: 11.5px; font-weight: 400; }
+      .ttl { font-size: 13px; font-weight: 500; }
+    </style>
+  </defs>
+  <g clip-path="url(#win)">
+    <rect width="880" height="174" fill="#0D1117"/>
+    <rect x="1" y="1" width="878" height="172" rx="11" fill="#0B0F14"/>
+    <rect x="0" y="0" width="880" height="36" fill="#161B22"/>
+    <rect x="0" y="0" width="880" height="2" fill="#3FB950" opacity="0.85"/>
+    <line x1="0" y1="36" x2="880" y2="36" stroke="#30363D" stroke-width="1"/>
+    <circle cx="22" cy="19" r="5.5" fill="#FF5F56"/>
+    <circle cx="40" cy="19" r="5.5" fill="#FFBD2E"/>
+    <circle cx="58" cy="19" r="5.5" fill="#27C93F"/>
+    <text class="m ttl" x="440" y="24" fill="#8B949E" text-anchor="middle">~/top-languages</text>
+    
+  <g><rect x="24.00" y="72" width="565.78" height="20" rx="0" fill="#3572A5"/><rect x="589.78" y="72" width="266.22" height="20" rx="0" fill="#F1E05A"/></g>
+  <rect x="24" y="72" width="832" height="20" rx="6" fill="none" stroke="#30363D" stroke-width="1"/><g>
+    <rect x="24" y="117" width="10" height="10" rx="2.5" fill="#3572A5"/>
+    <text class="m sm" x="41" y="126" fill="#C9D1D9">Python</text>
+    <text class="m sm" x="270" y="126" fill="#8B949E" text-anchor="end">68.0%</text>
+  </g><g>
+    <rect x="302" y="117" width="10" height="10" rx="2.5" fill="#F1E05A"/>
+    <text class="m sm" x="319" y="126" fill="#C9D1D9">JavaScript</text>
+    <text class="m sm" x="548" y="126" fill="#8B949E" text-anchor="end">32.0%</text>
+  </g>
+  </g>
+  <rect x="0.5" y="0.5" width="879" height="173" rx="12" fill="none" stroke="#30363D" stroke-width="1"/>
+</svg>

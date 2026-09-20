@@ -1,0 +1,8 @@
+# local render/verification artifacts — scratch space, not part of the profile
+.preview/
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/

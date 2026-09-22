@@ -45,7 +45,7 @@
     <rect x="662" y="66" width="194" height="102" rx="9" fill="#161B22" stroke="#21262D" stroke-width="1"/>
     <rect x="662" y="66" width="3" height="102" rx="1.5" fill="#7EE787" opacity="0.7"/>
     <text class="m lbl" x="680" y="92" fill="#8B949E">DAYS BUILDING</text>
-    <text class="m val" x="680" y="130" fill="#7EE787">98</text>
+    <text class="m val" x="680" y="130" fill="#7EE787">99</text>
     <text class="m sm"  x="680" y="151" fill="#484F58">since 2026/06</text>
   </g>
   <text class="m sm" x="24" y="194" fill="#484F58">auto-generated daily by scripts/render.py</text>

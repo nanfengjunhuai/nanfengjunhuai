@@ -24,14 +24,14 @@
     <rect x="24" y="66" width="194" height="102" rx="9" fill="#161B22" stroke="#21262D" stroke-width="1"/>
     <rect x="24" y="66" width="3" height="102" rx="1.5" fill="#7EE787" opacity="0.7"/>
     <text class="m lbl" x="42" y="92" fill="#8B949E">PUBLIC REPOS</text>
-    <text class="m val" x="42" y="130" fill="#7EE787">3</text>
-    <text class="m sm"  x="42" y="151" fill="#484F58">2 languages</text>
+    <text class="m val" x="42" y="130" fill="#7EE787">4</text>
+    <text class="m sm"  x="42" y="151" fill="#484F58">4 languages</text>
   </g>
   <g>
     <rect x="236" y="66" width="194" height="102" rx="9" fill="#161B22" stroke="#21262D" stroke-width="1"/>
     <rect x="236" y="66" width="3" height="102" rx="1.5" fill="#7EE787" opacity="0.7"/>
     <text class="m lbl" x="254" y="92" fill="#8B949E">CONTRIBUTIONS</text>
-    <text class="m val" x="254" y="130" fill="#7EE787">6</text>
+    <text class="m val" x="254" y="130" fill="#7EE787">8</text>
     <text class="m sm"  x="254" y="151" fill="#484F58">last 12 months</text>
   </g>
   <g>
@@ -39,13 +39,13 @@
     <rect x="449" y="66" width="3" height="102" rx="1.5" fill="#7EE787" opacity="0.7"/>
     <text class="m lbl" x="467" y="92" fill="#8B949E">TOP LANGUAGE</text>
     <text class="m val" x="467" y="130" fill="#7EE787">Python</text>
-    <text class="m sm"  x="467" y="151" fill="#484F58">77% of tracked code</text>
+    <text class="m sm"  x="467" y="151" fill="#484F58">73% of tracked code</text>
   </g>
   <g>
     <rect x="662" y="66" width="194" height="102" rx="9" fill="#161B22" stroke="#21262D" stroke-width="1"/>
     <rect x="662" y="66" width="3" height="102" rx="1.5" fill="#7EE787" opacity="0.7"/>
     <text class="m lbl" x="680" y="92" fill="#8B949E">DAYS BUILDING</text>
-    <text class="m val" x="680" y="130" fill="#7EE787">100</text>
+    <text class="m val" x="680" y="130" fill="#7EE787">101</text>
     <text class="m sm"  x="680" y="151" fill="#484F58">since 2026/06</text>
   </g>
   <text class="m sm" x="24" y="194" fill="#484F58">auto-generated daily by scripts/render.py</text>

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="174" viewBox="0 0 880 174" fill="none" role="img" aria-label="~/top-languages">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="200" viewBox="0 0 880 200" fill="none" role="img" aria-label="~/top-languages">
   <defs>
-    <clipPath id="win"><rect x="0" y="0" width="880" height="174" rx="12"/></clipPath>
+    <clipPath id="win"><rect x="0" y="0" width="880" height="200" rx="12"/></clipPath>
     <style>
       .m { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace; }
       .lbl { font-size: 11.5px; font-weight: 600; letter-spacing: 1.6px; }
@@ -10,8 +10,8 @@
     </style>
   </defs>
   <g clip-path="url(#win)">
-    <rect width="880" height="174" fill="#0D1117"/>
-    <rect x="1" y="1" width="878" height="172" rx="11" fill="#0B0F14"/>
+    <rect width="880" height="200" fill="#0D1117"/>
+    <rect x="1" y="1" width="878" height="198" rx="11" fill="#0B0F14"/>
     <rect x="0" y="0" width="880" height="36" fill="#161B22"/>
     <rect x="0" y="0" width="880" height="2" fill="#3FB950" opacity="0.85"/>
     <line x1="0" y1="36" x2="880" y2="36" stroke="#30363D" stroke-width="1"/>
@@ -20,16 +20,24 @@
     <circle cx="58" cy="19" r="5.5" fill="#27C93F"/>
     <text class="m ttl" x="440" y="24" fill="#8B949E" text-anchor="middle">~/top-languages</text>
     
-  <g><rect x="24.00" y="72" width="636.57" height="20" rx="0" fill="#3572A5"/><rect x="660.57" y="72" width="195.43" height="20" rx="0" fill="#F1E05A"/></g>
+  <g><rect x="24.00" y="72" width="606.91" height="20" rx="0" fill="#3572A5"/><rect x="630.91" y="72" width="206.53" height="20" rx="0" fill="#3178C6"/><rect x="837.44" y="72" width="11.35" height="20" rx="0" fill="#F1E05A"/><rect x="848.80" y="72" width="7.20" height="20" rx="0" fill="#563D7C"/></g>
   <rect x="24" y="72" width="832" height="20" rx="6" fill="none" stroke="#30363D" stroke-width="1"/><g>
     <rect x="24" y="117" width="10" height="10" rx="2.5" fill="#3572A5"/>
     <text class="m sm" x="41" y="126" fill="#C9D1D9">Python</text>
-    <text class="m sm" x="270" y="126" fill="#8B949E" text-anchor="end">76.5%</text>
+    <text class="m sm" x="270" y="126" fill="#8B949E" text-anchor="end">72.9%</text>
   </g><g>
-    <rect x="302" y="117" width="10" height="10" rx="2.5" fill="#F1E05A"/>
-    <text class="m sm" x="319" y="126" fill="#C9D1D9">JavaScript</text>
-    <text class="m sm" x="548" y="126" fill="#8B949E" text-anchor="end">23.5%</text>
+    <rect x="302" y="117" width="10" height="10" rx="2.5" fill="#3178C6"/>
+    <text class="m sm" x="319" y="126" fill="#C9D1D9">TypeScript</text>
+    <text class="m sm" x="548" y="126" fill="#8B949E" text-anchor="end">24.8%</text>
+  </g><g>
+    <rect x="580" y="117" width="10" height="10" rx="2.5" fill="#F1E05A"/>
+    <text class="m sm" x="597" y="126" fill="#C9D1D9">JavaScript</text>
+    <text class="m sm" x="826" y="126" fill="#8B949E" text-anchor="end">1.4%</text>
+  </g><g>
+    <rect x="24" y="143" width="10" height="10" rx="2.5" fill="#563D7C"/>
+    <text class="m sm" x="41" y="152" fill="#C9D1D9">CSS</text>
+    <text class="m sm" x="270" y="152" fill="#8B949E" text-anchor="end">0.9%</text>
   </g>
   </g>
-  <rect x="0.5" y="0.5" width="879" height="173" rx="12" fill="none" stroke="#30363D" stroke-width="1"/>
+  <rect x="0.5" y="0.5" width="879" height="199" rx="12" fill="none" stroke="#30363D" stroke-width="1"/>
 </svg>

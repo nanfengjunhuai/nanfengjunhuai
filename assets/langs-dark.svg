@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="162" viewBox="0 0 880 162" fill="none" role="img" aria-label="~/top-languages">
+  <rect width="880" height="162" fill="#0B0E14"/>
+  <rect x="0.5" y="0.5" width="879" height="161" fill="none" stroke="#1C2430" stroke-width="1"/>
+  <g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="11.5" font-weight="600" letter-spacing="1.6">
+    <rect x="24" y="11" width="2.5" height="12" fill="#22D3EE"/>
+    <text x="37" y="22" fill="#22D3EE">SYS.04</text>
+    <text x="104" y="22" fill="#5A6675">~/top-languages</text>
+    <text x="856" y="22" fill="#5A6675" text-anchor="end">4 tracked</text>
+  </g>
+  <line x1="24" y1="34.5" x2="856" y2="34.5" stroke="#1C2430" stroke-width="1"/>
+
+  <g><rect x="24.00" y="62" width="606.91" height="22" fill="#22D3EE" fill-opacity="1.0"/><rect x="630.91" y="62" width="206.53" height="22" fill="#22D3EE" fill-opacity="0.78"/><rect x="630.16" y="62" width="1.5" height="22" fill="#080B10"/><rect x="837.44" y="62" width="11.35" height="22" fill="#22D3EE" fill-opacity="0.62"/><rect x="836.69" y="62" width="1.5" height="22" fill="#080B10"/><rect x="848.80" y="62" width="7.20" height="22" fill="#22D3EE" fill-opacity="0.5"/><rect x="848.05" y="62" width="1.5" height="22" fill="#080B10"/></g>
+  <rect x="24" y="62" width="832" height="22" fill="none" stroke="#1C2430" stroke-width="1"/><g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace'>
+    <rect x="24.0" y="103.5" width="9" height="9" fill="#22D3EE" fill-opacity="1.0"/>
+    <text font-size="11.5" x="41.0" y="112" fill="#E6EDF3">Python</text>
+    <text font-size="11.5" x="210.0" y="112" fill="#5A6675" text-anchor="end">72.9%</text>
+  </g><g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace'>
+    <rect x="301.3" y="103.5" width="9" height="9" fill="#22D3EE" fill-opacity="0.78"/>
+    <text font-size="11.5" x="318.3" y="112" fill="#E6EDF3">TypeScript</text>
+    <text font-size="11.5" x="487.3" y="112" fill="#5A6675" text-anchor="end">24.8%</text>
+  </g><g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace'>
+    <rect x="578.7" y="103.5" width="9" height="9" fill="#22D3EE" fill-opacity="0.62"/>
+    <text font-size="11.5" x="595.7" y="112" fill="#E6EDF3">JavaScript</text>
+    <text font-size="11.5" x="764.7" y="112" fill="#5A6675" text-anchor="end">1.4%</text>
+  </g><g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace'>
+    <rect x="24.0" y="129.5" width="9" height="9" fill="#22D3EE" fill-opacity="0.5"/>
+    <text font-size="11.5" x="41.0" y="138" fill="#E6EDF3">CSS</text>
+    <text font-size="11.5" x="210.0" y="138" fill="#5A6675" text-anchor="end">0.9%</text>
+  </g>
+</svg>

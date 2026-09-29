@@ -9,25 +9,33 @@ China, and they rate-limit constantly — which shows up as a broken image.
 Everything here is stdlib-only and the output is committed to this repo,
 so the cards can never break and the palette matches the profile exactly.
 
-Two deliberate choices:
+Four deliberate choices:
   * Language split comes from /repos/:owner/:repo/languages (GitHub's own
     linguist analysis), not repo size. Repo size counts package-lock.json
     and friends, which would report a React Native app as 99% JavaScript.
   * Star/follower tiles only appear once they are non-zero. A new account
     showing "0 stars / 0 followers" reads worse than showing nothing, and
     they will surface on their own the day they stop being zero.
+  * No boxes around the tiles, and the numbers are NOT accented. Four
+    identical rounded rectangles with a bright number in each is the shape
+    everyone recognises as a template, and colouring every value reads as
+    shouting. Hairline separators and a neutral value tone instead; the
+    accent survives as one small tick per column.
+  * Both themes are emitted from the same geometry but separate palettes.
+    A card is not "dark mode with inverted colours" — see DESIGN.md §2.
 
 Usage:
     python scripts/render.py                 # unauthenticated (60 req/h)
     GITHUB_TOKEN=ghp_xxx python scripts/render.py
 
-Writes: assets/stats.svg, assets/langs.svg
+Writes: assets/stats-{dark,light}.svg, assets/langs-{dark,light}.svg
 """
 
 import datetime
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
 from xml.sax.saxutils import escape
@@ -36,74 +44,88 @@ USER = os.environ.get("PROFILE_USER", "nanfengjunhuai")
 TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
 API = "https://api.github.com"
 
-# ── terminal-green theme ────────────────────────────────────────────────
-CANVAS = "#0D1117"
-PANEL = "#161B22"
-WELL = "#0B0F14"
-BORDER = "#30363D"
-HAIRLINE = "#21262D"
-GREEN = "#3FB950"
-GREEN_HI = "#7EE787"
-TEXT = "#C9D1D9"
-MUTED = "#8B949E"
-DIM = "#484F58"
+# ── palettes (DESIGN.md §2) ─────────────────────────────────────────────
+PALETTES = {
+    "dark": {
+        "bg": "#0B0E14", "well": "#080B10",
+        "line": "#1C2430", "grid": "#131A24",
+        "text": "#E6EDF3", "dim": "#8B96A5", "mute": "#5A6675",
+        "accent": "#22D3EE",
+    },
+    "light": {
+        "bg": "#FCFCFD", "well": "#FFFFFF",
+        "line": "#DCE1E8", "grid": "#F0F3F7",
+        "text": "#0B0E14", "dim": "#4A5561", "mute": "#6B7684",
+        "accent": "#0E7490",
+    },
+}
+
+# Monochrome ramp for the language bar. Linguist's brand colours (Python blue
+# next to JavaScript yellow next to TypeScript blue) turn the card into a
+# paint chart and break the instrument language, so separation is carried by
+# lightness alone and the legend names each language anyway.
+SEG_OPACITY = [1.0, 0.78, 0.62, 0.50, 0.40, 0.32]
 
 FONT = ('ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, '
         '"Liberation Mono", "DejaVu Sans Mono", monospace')
 
-# GitHub linguist colours, so the bar reads as "real" to anyone who knows
-LANG_COLORS = {
-    "Python": "#3572A5", "JavaScript": "#F1E05A", "TypeScript": "#3178C6",
-    "HTML": "#E34C26", "CSS": "#563D7C", "SCSS": "#C6538C", "Less": "#1D365D",
-    "C": "#555555", "C++": "#F34B7D", "C#": "#178600", "Java": "#B07219",
-    "Shell": "#89E051", "Batchfile": "#C1F12E", "PowerShell": "#012456",
-    "Jupyter Notebook": "#DA5B0B", "Markdown": "#083FA1", "TeX": "#3D6117",
-    "Go": "#00ADD8", "Rust": "#DEA584", "Ruby": "#701516", "PHP": "#4F5D95",
-    "Swift": "#F05138", "Kotlin": "#A97BFF", "Dart": "#00B4AB",
-    "Vue": "#41B883", "R": "#198CE7", "MATLAB": "#E16737", "Julia": "#A270BA",
-    "Dockerfile": "#384D54", "Makefile": "#427819", "Lua": "#000080",
-    "Objective-C": "#438EFF", "Assembly": "#6E4C13", "Perl": "#0298C3",
-}
-FALLBACK_COLORS = ["#3FB950", "#58A6FF", "#D29922", "#BC8CFF",
-                   "#F778BA", "#39C5CF", "#FF7B72"]
+CARD_W = 880
+RAIL_H = 34
+
+
+def _request(url, headers, data=None, attempts=4):
+    """GET/POST with retries. Returns parsed JSON, or None once it gives up.
+
+    The retry is not defensive padding. This profile is rendered from a
+    mainland-China network, where TLS handshakes to api.github.com are reset
+    at random — measured at roughly one failure in six — and a single reset
+    used to blank out the whole card. GitHub Actions sees the same thing
+    occasionally, so the retry pays off there too.
+    """
+    last = None
+    for attempt in range(attempts):
+        req = urllib.request.Request(url, data=data, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=25) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            last = exc
+            # 4xx other than rate limiting will not fix themselves
+            if exc.code < 500 and exc.code != 429:
+                break
+        except Exception as exc:  # noqa: BLE001 - transient network
+            last = exc
+        if attempt < attempts - 1:
+            time.sleep(0.8 * (2 ** attempt))
+    sys.stderr.write("  ! {} -> {}\n".format(url, last))
+    return None
 
 
 def api(path):
     """GET a GitHub API path. Returns parsed JSON, or None on any failure."""
     url = path if path.startswith("http") else API + path
-    req = urllib.request.Request(url, headers={
+    headers = {
         "Accept": "application/vnd.github+json",
         "User-Agent": USER + "-profile-readme",
-    })
+    }
     if TOKEN:
-        req.add_header("Authorization", "Bearer " + TOKEN)
-    try:
-        with urllib.request.urlopen(req, timeout=25) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except Exception as exc:  # noqa: BLE001 - a dead card beats a dead run
-        sys.stderr.write("  ! {} -> {}\n".format(url, exc))
-        return None
+        headers["Authorization"] = "Bearer " + TOKEN
+    return _request(url, headers)
 
 
 def graphql(query):
     """POST a GraphQL query. Needs a token; returns None without one."""
     if not TOKEN:
         return None
-    req = urllib.request.Request(
+    return _request(
         API + "/graphql",
-        data=json.dumps({"query": query}).encode("utf-8"),
-        headers={
+        {
             "Authorization": "Bearer " + TOKEN,
             "Content-Type": "application/json",
             "User-Agent": USER + "-profile-readme",
         },
+        data=json.dumps({"query": query}).encode("utf-8"),
     )
-    try:
-        with urllib.request.urlopen(req, timeout=25) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except Exception as exc:  # noqa: BLE001
-        sys.stderr.write("  ! graphql -> {}\n".format(exc))
-        return None
 
 
 # ── data gathering ──────────────────────────────────────────────────────
@@ -149,51 +171,50 @@ def fetch_contributions():
 
 # ── SVG helpers ─────────────────────────────────────────────────────────
 
-def card(width, height, title, body, accent=GREEN):
-    """A terminal window: title bar, traffic lights, accent rail, body."""
+def panel(width, height, sys_id, title, note, body, p):
+    """The instrument frame: a status rail, a hairline, then the readout."""
     return """<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" fill="none" role="img" aria-label="{label}">
-  <defs>
-    <clipPath id="win"><rect x="0" y="0" width="{w}" height="{h}" rx="12"/></clipPath>
-    <style>
-      .m {{ font-family: {font}; }}
-      .lbl {{ font-size: 11.5px; font-weight: 600; letter-spacing: 1.6px; }}
-      .val {{ font-size: 32px; font-weight: 700; }}
-      .sm  {{ font-size: 11.5px; font-weight: 400; }}
-      .ttl {{ font-size: 13px; font-weight: 500; }}
-    </style>
-  </defs>
-  <g clip-path="url(#win)">
-    <rect width="{w}" height="{h}" fill="{canvas}"/>
-    <rect x="1" y="1" width="{wi}" height="{hi}" rx="11" fill="{well}"/>
-    <rect x="0" y="0" width="{w}" height="36" fill="{panel}"/>
-    <rect x="0" y="0" width="{w}" height="2" fill="{accent}" opacity="0.85"/>
-    <line x1="0" y1="36" x2="{w}" y2="36" stroke="{border}" stroke-width="1"/>
-    <circle cx="22" cy="19" r="5.5" fill="#FF5F56"/>
-    <circle cx="40" cy="19" r="5.5" fill="#FFBD2E"/>
-    <circle cx="58" cy="19" r="5.5" fill="#27C93F"/>
-    <text class="m ttl" x="{w2}" y="24" fill="{muted}" text-anchor="middle">{title}</text>
-    {body}
+  <rect width="{w}" height="{h}" fill="{bg}"/>
+  <rect x="0.5" y="0.5" width="{wo}" height="{ho}" fill="none" stroke="{line}" stroke-width="1"/>
+  <g font-family='{font}' font-size="11.5" font-weight="600" letter-spacing="1.6">
+    <rect x="24" y="11" width="2.5" height="12" fill="{accent}"/>
+    <text x="37" y="22" fill="{accent}">{sys_id}</text>
+    <text x="104" y="22" fill="{mute}">{title}</text>
+    <text x="{note_x}" y="22" fill="{mute}" text-anchor="end">{note}</text>
   </g>
-  <rect x="0.5" y="0.5" width="{wo}" height="{ho}" rx="12" fill="none" stroke="{border}" stroke-width="1"/>
+  <line x1="24" y1="{rail}" x2="{rail_x}" y2="{rail}" stroke="{line}" stroke-width="1"/>
+{body}
 </svg>
-""".format(w=width, h=height, wi=width - 2, hi=height - 2, wo=width - 1,
-           ho=height - 1, w2=width // 2, label=escape(title), font=FONT,
-           canvas=CANVAS, panel=PANEL, well=WELL, border=BORDER,
-           muted=MUTED, accent=accent, title=escape(title), body=body)
+""".format(w=width, h=height, wo=width - 1, ho=height - 1, label=escape(title),
+           bg=p["bg"], line=p["line"], accent=p["accent"], mute=p["mute"],
+           font=FONT, sys_id=sys_id, title=escape(title),
+           note=escape(note), note_x=width - 24, rail=RAIL_H + 0.5,
+           rail_x=width - 24, body=body)
 
 
-def tile(x, y, w, h, label, value, sub, value_fill=GREEN_HI):
+def readout(x, label, value, sub, p, show_tick):
+    """One column of the readout: label, value, note. No box.
+
+    The value carries `text`, not `accent`. Accenting all four numbers was the
+    thing that made the old card shout; the accent survives as a 1px tick so
+    the columns still read as instrument channels.
+
+    The tick sits at the column boundary and the text is indented past it —
+    drawing both at the same x ran the rule straight through the first letter
+    of every label.
+    """
+    tick = ('<rect x="{:.1f}" y="60" width="1" height="76" fill="{a}" '
+            'fill-opacity="0.55"/>'.format(x, a=p["accent"])) if show_tick else ""
+    tx = x + 12
     return """
   <g>
-    <rect x="{x}" y="{y}" width="{w}" height="{h}" rx="9" fill="{panel}" stroke="{hair}" stroke-width="1"/>
-    <rect x="{x}" y="{y}" width="3" height="{h}" rx="1.5" fill="{valf}" opacity="0.7"/>
-    <text class="m lbl" x="{tx}" y="{ly}" fill="{muted}">{label}</text>
-    <text class="m val" x="{tx}" y="{vy}" fill="{valf}">{value}</text>
-    <text class="m sm"  x="{tx}" y="{sy}" fill="{dim}">{sub}</text>
-  </g>""".format(x=x, y=y, w=w, h=h, tx=x + 18, ly=y + 26, vy=y + 64,
-                 sy=y + 85, label=escape(label), value=escape(value),
-                 sub=escape(sub), valf=value_fill, panel=PANEL,
-                 hair=HAIRLINE, muted=MUTED, dim=DIM)
+    {tick}
+    <text font-family='{font}' font-size="10.5" font-weight="600" letter-spacing="1.5" x="{tx:.1f}" y="76" fill="{mute}">{label}</text>
+    <text font-family='{font}' font-size="30" font-weight="700" x="{tx:.1f}" y="114" fill="{text}">{value}</text>
+    <text font-family='{font}' font-size="10.5" x="{tx:.1f}" y="134" fill="{mute}">{sub}</text>
+  </g>""".format(font=FONT, tick=tick, tx=tx, label=escape(label),
+                 value=escape(value), sub=escape(sub),
+                 mute=p["mute"], text=p["text"])
 
 
 def human(n):
@@ -208,7 +229,7 @@ def truncate(text, limit):
 
 # ── card 1: stats ───────────────────────────────────────────────────────
 
-def build_stats(user, repos, langs, contributions):
+def build_stats(user, repos, langs, contributions, p, theme):
     repos = repos or []
     user = user or {}
     stars = sum(r.get("stargazers_count", 0) for r in repos)
@@ -257,8 +278,8 @@ def build_stats(user, repos, langs, contributions):
         top_name = max(langs.items(), key=lambda kv: kv[1])[0]
         top_pct = 100.0 * langs[top_name] / total
 
-    # Ordered by how much each tile earns its space. Every tile that can read
-    # zero is conditional, so a new account never advertises a zero — and
+    # Ordered by how much each column earns its space. Every column that can
+    # read zero is conditional, so a new account never advertises a zero — and
     # each one surfaces on its own the day it stops being zero.
     candidates = [
         ("PUBLIC REPOS", str(len(repos)),
@@ -279,30 +300,30 @@ def build_stats(user, repos, langs, contributions):
     ]
     cells = candidates[:4]
 
-    # Tiles stretch to fill the card, so 3 or 4 both look deliberate.
-    x0, gap, th, ty = 24, 18, 102, 66
-    span = 880 - x0 * 2
-    tw = (span - gap * (len(cells) - 1)) / float(len(cells))
-
+    # Columns stretch to fill the card, so 3 or 4 both look deliberate. Text
+    # sits 0px from its column's left edge; the tick marks the boundary.
+    x0 = 24
+    span = CARD_W - x0 * 2
+    cw = span / float(len(cells))
     body = ""
     for i, (label, value, sub) in enumerate(cells):
-        body += tile(int(round(x0 + i * (tw + gap))), ty, int(round(tw)),
-                     th, label, value, sub)
+        body += readout(int(round(x0 + i * cw)), label, value, sub, p,
+                        show_tick=(i > 0))
 
-    body += ('\n  <text class="m sm" x="24" y="{}" fill="{}">'
-             'auto-generated daily by scripts/render.py</text>'
-             ).format(ty + th + 26, DIM)
+    body += ('\n  <text font-family=\'{f}\' font-size="10.5" x="24" y="162" '
+             'fill="{m}">rendered from the GitHub API &#183; refreshed daily '
+             'by scripts/render.py</text>'.format(f=FONT, m=p["mute"]))
 
-    return card(880, ty + th + 46, "~/stats", body)
+    return panel(CARD_W, 182, "SYS.03", "~/stats", "live", body, p)
 
 
 # ── card 2: language distribution ───────────────────────────────────────
 
-def build_langs(langs):
+def build_langs(langs, p, theme):
     if not langs:
-        return card(880, 150, "~/top-languages",
-                    '\n  <text class="m sm" x="24" y="90" fill="{}">'
-                    'no language data yet</text>'.format(DIM))
+        body = ('\n  <text font-family=\'{f}\' font-size="10.5" x="24" y="80" '
+                'fill="{m}">no language data yet</text>'.format(f=FONT, m=p["mute"]))
+        return panel(CARD_W, 108, "SYS.04", "~/top-languages", "linguist", body, p)
 
     total = float(sum(langs.values()))
     ranked = sorted(langs.items(), key=lambda kv: kv[1], reverse=True)[:6]
@@ -312,40 +333,53 @@ def build_langs(langs):
     if len(langs) > 6 and tail > 0:
         ranked.append(("Other", tail))
 
-    palette = {n: LANG_COLORS.get(n, FALLBACK_COLORS[i % len(FALLBACK_COLORS)])
-               for i, (n, _) in enumerate(ranked)}
-
-    bar_x, bar_y, bar_w, bar_h = 24, 72, 832, 20
-    body = '\n  <g>'
+    bar_x, bar_y, bar_w, bar_h = 24, 62, CARD_W - 48, 22
+    segs = []
     cursor = float(bar_x)
     for i, (name, size) in enumerate(ranked):
         seg = bar_w * size / total
         if i == len(ranked) - 1:
-            seg = bar_x + bar_w - cursor   # absorb rounding, end flush
-        rx = 5 if len(ranked) == 1 else 0
-        body += ('<rect x="{:.2f}" y="{}" width="{:.2f}" height="{}" rx="{}" fill="{}"/>'
-                 ).format(cursor, bar_y, max(seg, 0.6), bar_h, rx, palette[name])
+            seg = bar_x + bar_w - cursor          # absorb rounding, end flush
+        segs.append((cursor, max(seg, 0.5), SEG_OPACITY[i % len(SEG_OPACITY)]))
         cursor += seg
+
+    body = '\n  <g>'
+    for i, (sx, sw, opacity) in enumerate(segs):
+        body += ('<rect x="{:.2f}" y="{}" width="{:.2f}" height="{}" '
+                 'fill="{}" fill-opacity="{}"/>'
+                 .format(sx, bar_y, sw, bar_h, p["accent"], opacity))
+        # A 1.5px gap between two sub-1% slivers turns the tail of the bar into
+        # visual noise, so only separate segments that both have room to spare.
+        if i > 0 and sw >= 4 and segs[i - 1][1] >= 4:
+            body += ('<rect x="{:.2f}" y="{}" width="1.5" height="{}" fill="{}"/>'
+                     .format(sx - 0.75, bar_y, bar_h, p["well"]))
     body += '</g>'
+    body += ('\n  <rect x="{x}" y="{y}" width="{w}" height="{h}" fill="none" '
+             'stroke="{l}" stroke-width="1"/>'
+             .format(x=bar_x, y=bar_y, w=bar_w, h=bar_h, l=p["line"]))
 
-    body += ('\n  <rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6" '
-             'fill="none" stroke="{b}" stroke-width="1"/>'
-             ).format(x=bar_x, y=bar_y, w=bar_w, h=bar_h, b=BORDER)
-
-    lx, ly, col_w = 24, 126, 278
+    # legend: three columns, swatch + name + share. The share is right-aligned
+    # against a fixed label width rather than the column edge — anchoring it to
+    # the column edge left a wide dead gap that made the number look orphaned
+    # from the language it belonged to.
+    lx, ly, col_w = 24, 112, (CARD_W - 48) / 3
+    label_w = 186
     for i, (name, size) in enumerate(ranked):
         cx = lx + (i % 3) * col_w
         cy = ly + (i // 3) * 26
-        body += ('''<g>
-    <rect x="{cx}" y="{cy0}" width="10" height="10" rx="2.5" fill="{c}"/>
-    <text class="m sm" x="{tx}" y="{cy}" fill="{t}">{n}</text>
-    <text class="m sm" x="{px}" y="{cy}" fill="{d}" text-anchor="end">{p:.1f}%</text>
-  </g>''').format(cx=cx, cy0=cy - 9, cy=cy, tx=cx + 17, px=cx + 246,
-                   c=palette[name], t=TEXT, d=MUTED,
-                   n=escape(truncate(name, 22)), p=100.0 * size / total)
+        body += ("""<g font-family='{f}'>
+    <rect x="{cx:.1f}" y="{sy:.1f}" width="9" height="9" fill="{a}" fill-opacity="{o}"/>
+    <text font-size="11.5" x="{tx:.1f}" y="{cy}" fill="{t}">{n}</text>
+    <text font-size="11.5" x="{px:.1f}" y="{cy}" fill="{m}" text-anchor="end">{pct:.1f}%</text>
+  </g>""").format(f=FONT, cx=cx, sy=cy - 8.5, a=p["accent"],
+                  o=SEG_OPACITY[i % len(SEG_OPACITY)], tx=cx + 17, cy=cy,
+                  px=cx + label_w, t=p["text"], m=p["mute"],
+                  n=escape(truncate(name, 20)), pct=100.0 * size / total)
 
     rows = (len(ranked) + 2) // 3
-    return card(880, ly + rows * 26 + 22, "~/top-languages", body)
+    height = int(ly + (rows - 1) * 26 + 24)
+    note = "{} tracked".format(len(langs))
+    return panel(CARD_W, height, "SYS.04", "~/top-languages", note, body, p)
 
 
 # ── main ────────────────────────────────────────────────────────────────
@@ -369,11 +403,14 @@ def main():
                                                 key=lambda kv: -kv[1])[:5]) or "none"))
     print("  contributions: {}".format(contributions))
 
-    cards = (
-        ("stats.svg", build_stats(user, repos, langs, contributions)),
-        ("langs.svg", build_langs(langs)),
-    )
-    for filename, svg in cards:
+    written = []
+    for theme, p in PALETTES.items():
+        written.append(("stats-{}.svg".format(theme),
+                        build_stats(user, repos, langs, contributions, p, theme)))
+        written.append(("langs-{}.svg".format(theme),
+                        build_langs(langs, p, theme)))
+
+    for filename, svg in written:
         path = os.path.join(out, filename)
         with open(path, "w", encoding="utf-8") as fh:
             fh.write(svg)

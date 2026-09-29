@@ -1,7 +1,12 @@
 name: Refresh profile cards
 
-# Redraws assets/stats.svg and assets/langs.svg from live GitHub data, so the
-# profile stays accurate without anyone remembering to run anything.
+# Redraws the data-driven cards from live GitHub data, so the profile stays
+# accurate without anyone remembering to run anything.
+#
+# Only the cards under "Refresh" below are on the cron. The hero and the stack
+# strip are generated too, but from fixed inputs (a solved device model, and
+# brand paths pinned under assets/icons/), so their output cannot drift with
+# time — regenerating them daily would only add empty commits.
 #
 # Runs on a cron rather than on every push: contributions and follower counts
 # change when you work in *other* repos too, and those pushes never land here.
@@ -48,7 +53,8 @@ jobs:
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/stats.svg assets/langs.svg
+          git add assets/stats-dark.svg assets/stats-light.svg \
+                  assets/langs-dark.svg assets/langs-light.svg
           if git diff --quiet --cached; then
             echo "cards unchanged — nothing to commit"
           else

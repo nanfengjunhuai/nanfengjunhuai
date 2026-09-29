@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="182" viewBox="0 0 880 182" fill="none" role="img" aria-label="~/stats">
+  <rect width="880" height="182" fill="#0B0E14"/>
+  <rect x="0.5" y="0.5" width="879" height="181" fill="none" stroke="#1C2430" stroke-width="1"/>
+  <g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="11.5" font-weight="600" letter-spacing="1.6">
+    <rect x="24" y="11" width="2.5" height="12" fill="#22D3EE"/>
+    <text x="37" y="22" fill="#22D3EE">SYS.03</text>
+    <text x="104" y="22" fill="#5A6675">~/stats</text>
+    <text x="856" y="22" fill="#5A6675" text-anchor="end">live</text>
+  </g>
+  <line x1="24" y1="34.5" x2="856" y2="34.5" stroke="#1C2430" stroke-width="1"/>
+
+  <g>
+    
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" font-weight="600" letter-spacing="1.5" x="36.0" y="76" fill="#5A6675">PUBLIC REPOS</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="30" font-weight="700" x="36.0" y="114" fill="#E6EDF3">4</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" x="36.0" y="134" fill="#5A6675">4 languages</text>
+  </g>
+  <g>
+    <rect x="232.0" y="60" width="1" height="76" fill="#22D3EE" fill-opacity="0.55"/>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" font-weight="600" letter-spacing="1.5" x="244.0" y="76" fill="#5A6675">CONTRIBUTIONS</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="30" font-weight="700" x="244.0" y="114" fill="#E6EDF3">16</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" x="244.0" y="134" fill="#5A6675">last 12 months</text>
+  </g>
+  <g>
+    <rect x="440.0" y="60" width="1" height="76" fill="#22D3EE" fill-opacity="0.55"/>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" font-weight="600" letter-spacing="1.5" x="452.0" y="76" fill="#5A6675">TOP LANGUAGE</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="30" font-weight="700" x="452.0" y="114" fill="#E6EDF3">Python</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" x="452.0" y="134" fill="#5A6675">73% of tracked code</text>
+  </g>
+  <g>
+    <rect x="648.0" y="60" width="1" height="76" fill="#22D3EE" fill-opacity="0.55"/>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" font-weight="600" letter-spacing="1.5" x="660.0" y="76" fill="#5A6675">DAYS BUILDING</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="30" font-weight="700" x="660.0" y="114" fill="#E6EDF3">106</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" x="660.0" y="134" fill="#5A6675">since 2026/06</text>
+  </g>
+  <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" x="24" y="162" fill="#5A6675">rendered from the GitHub API &#183; refreshed daily by scripts/render.py</text>
+</svg>

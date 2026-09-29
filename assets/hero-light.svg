@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" fill="none" role="img" aria-label="nanfeng — physics and optoelectronics, math modeling and AI agents, drawn as a semilog diode I-V sweep with a fitted model">
+<defs>
+<pattern id="micro" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 0V8M0 8H8" stroke="#F0F3F7" stroke-width="0.5"/></pattern>
+<pattern id="major" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0V64M0 64H64" stroke="#F0F3F7" stroke-width="1"/></pattern>
+<radialGradient id="vig" cx="0.5" cy="0.42" r="0.78"><stop offset="0" stop-color="#fff" stop-opacity="0.9"/><stop offset="0.55" stop-color="#fff" stop-opacity="0.405"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<mask id="vigMask"><rect width="1280" height="400" fill="url(#vig)"/></mask>
+<radialGradient id="ambient" cx="0.55" cy="0.62" r="0.5"><stop offset="0" stop-color="#0E7490" stop-opacity="0.05"/><stop offset="1" stop-color="#0E7490" stop-opacity="0"/></radialGradient>
+<linearGradient id="sweepBand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0E7490" stop-opacity="0"/><stop offset="0.5" stop-color="#0E7490" stop-opacity="0.22"/><stop offset="1" stop-color="#0E7490" stop-opacity="0"/></linearGradient>
+<clipPath id="screen"><rect x="104" y="166" width="1120" height="186" rx="3"/></clipPath>
+<clipPath id="plot"><rect x="120" y="182" width="1088" height="154"/></clipPath>
+</defs>
+<rect width="1280" height="400" fill="#FCFCFD"/>
+<g mask="url(#vigMask)"><rect width="1280" height="400" fill="url(#micro)"/><rect width="1280" height="400" fill="url(#major)"/></g>
+<rect width="1280" height="400" fill="url(#ambient)"/>
+<g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="11.5" font-weight="600" letter-spacing="1.6">
+<rect x="56" y="14" width="2.5" height="12" fill="#0E7490"/>
+<text x="69" y="25.5" fill="#0E7490">SYS.01</text>
+<text x="136" y="25.5" fill="#6B7684">nanfeng@github</text>
+<text x="1206" y="25.5" fill="#6B7684" text-anchor="end">0.05 V/div&#160;&#160;&#183;&#160;&#160;1 decade/div</text>
+</g>
+<line x1="56" y1="40.5" x2="1224" y2="40.5" stroke="#DCE1E8" stroke-width="1"/>
+<circle cx="1222" cy="22" r="3.5" fill="#0E7490"><animate attributeName="opacity" values="1;1;0.15;0.15;1" keyTimes="0;0.42;0.5;0.92;1" dur="1.6s" repeatCount="indefinite"/></circle>
+<text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="64" font-weight="700" letter-spacing="11.5" x="56" y="126" fill="#0B0E14">NANFENG</text>
+<g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' text-anchor="end">
+<text font-size="15" x="1224" y="96" fill="#4A5561">physics &#183; optoelectronics</text>
+<text font-size="20" font-weight="600" x="1224" y="126" fill="#0B0E14"><tspan fill="#0E7490">math modeling</tspan><tspan fill="#6B7684">&#160;&#215;&#160;</tspan><tspan fill="#0E7490">ai agents</tspan></text>
+</g>
+<line x1="56" y1="150.5" x2="1224" y2="150.5" stroke="#DCE1E8" stroke-width="1"/>
+<rect x="104.5" y="166.5" width="1119" height="185" rx="3" fill="#FFFFFF" stroke="#DCE1E8" stroke-width="1"/>
+<g clip-path="url(#screen)">
+<g stroke="#E4E9EF" stroke-width="1">
+<line x1="210.7" y1="182" x2="210.7" y2="336"/>
+<line x1="301.3" y1="182" x2="301.3" y2="336"/>
+<line x1="392.0" y1="182" x2="392.0" y2="336"/>
+<line x1="482.7" y1="182" x2="482.7" y2="336"/>
+<line x1="573.3" y1="182" x2="573.3" y2="336"/>
+<line x1="664.0" y1="182" x2="664.0" y2="336"/>
+<line x1="754.7" y1="182" x2="754.7" y2="336"/>
+<line x1="845.3" y1="182" x2="845.3" y2="336"/>
+<line x1="936.0" y1="182" x2="936.0" y2="336"/>
+<line x1="1026.7" y1="182" x2="1026.7" y2="336"/>
+<line x1="1117.3" y1="182" x2="1117.3" y2="336"/>
+<line x1="120" y1="284.7" x2="1208" y2="284.7"/>
+<line x1="120" y1="233.3" x2="1208" y2="233.3"/>
+</g>
+<g stroke="#F0F3F7" stroke-width="1">
+<line x1="120" y1="320.5" x2="1208" y2="320.5"/>
+<line x1="120" y1="300.1" x2="1208" y2="300.1"/>
+<line x1="120" y1="269.2" x2="1208" y2="269.2"/>
+<line x1="120" y1="248.8" x2="1208" y2="248.8"/>
+<line x1="120" y1="217.9" x2="1208" y2="217.9"/>
+<line x1="120" y1="197.5" x2="1208" y2="197.5"/>
+</g>
+<line x1="120.5" y1="182" x2="120.5" y2="336" stroke="#DCE1E8" stroke-width="1"/>
+<line x1="120" y1="336.5" x2="1208" y2="336.5" stroke="#DCE1E8" stroke-width="1"/>
+<g clip-path="url(#plot)">
+<path d="M120.0,364.1L137.3,357.4L154.5,355.6L171.8,352.2L189.1,347.8L206.3,343.0L223.6,339.9L240.9,338.4L258.2,333.9L275.4,327.9L292.7,327.2L310.0,321.4L327.2,316.9L344.5,314.8L361.8,312.5L379.0,310.1L396.3,303.7L413.6,300.3L430.9,295.5L448.1,291.1L465.4,288.0L482.7,283.3L499.9,282.1L517.2,277.6L534.5,272.5L551.7,270.3L569.0,269.4L586.3,264.0L603.6,260.5L620.8,258.3L638.1,253.0L655.4,250.6L672.6,248.4L689.9,242.6L707.2,240.6L724.4,237.5L741.7,234.6L759.0,230.2L776.3,228.9L793.5,227.6L810.8,226.5L828.1,221.0L845.3,223.5L862.6,217.3L879.9,214.2L897.1,209.6L914.4,210.9L931.7,209.9L949.0,207.2L966.2,205.4L983.5,204.8L1000.8,203.0L1018.0,201.8L1035.3,201.1L1052.6,198.9L1069.8,197.2L1087.1,196.7L1104.4,193.1L1121.7,194.0L1138.9,193.9L1156.2,193.4L1173.5,189.4L1190.7,191.8L1208.0,189.8" fill="none" stroke="#B45309" stroke-width="1.3" stroke-opacity="0.75" stroke-linejoin="round"/>
+<g fill="#B45309" fill-opacity="0.9">
+<circle cx="120.0" cy="364.1" r="1.5"/>
+<circle cx="137.3" cy="357.4" r="1.5"/>
+<circle cx="154.5" cy="355.6" r="1.5"/>
+<circle cx="171.8" cy="352.2" r="1.5"/>
+<circle cx="189.1" cy="347.8" r="1.5"/>
+<circle cx="206.3" cy="343.0" r="1.5"/>
+<circle cx="223.6" cy="339.9" r="1.5"/>
+<circle cx="240.9" cy="338.4" r="1.5"/>
+<circle cx="258.2" cy="333.9" r="1.5"/>
+<circle cx="275.4" cy="327.9" r="1.5"/>
+<circle cx="292.7" cy="327.2" r="1.5"/>
+<circle cx="310.0" cy="321.4" r="1.5"/>
+<circle cx="327.2" cy="316.9" r="1.5"/>
+<circle cx="344.5" cy="314.8" r="1.5"/>
+<circle cx="361.8" cy="312.5" r="1.5"/>
+<circle cx="379.0" cy="310.1" r="1.5"/>
+<circle cx="396.3" cy="303.7" r="1.5"/>
+<circle cx="413.6" cy="300.3" r="1.5"/>
+<circle cx="430.9" cy="295.5" r="1.5"/>
+<circle cx="448.1" cy="291.1" r="1.5"/>
+<circle cx="465.4" cy="288.0" r="1.5"/>
+<circle cx="482.7" cy="283.3" r="1.5"/>
+<circle cx="499.9" cy="282.1" r="1.5"/>
+<circle cx="517.2" cy="277.6" r="1.5"/>
+<circle cx="534.5" cy="272.5" r="1.5"/>
+<circle cx="551.7" cy="270.3" r="1.5"/>
+<circle cx="569.0" cy="269.4" r="1.5"/>
+<circle cx="586.3" cy="264.0" r="1.5"/>
+<circle cx="603.6" cy="260.5" r="1.5"/>
+<circle cx="620.8" cy="258.3" r="1.5"/>
+<circle cx="638.1" cy="253.0" r="1.5"/>
+<circle cx="655.4" cy="250.6" r="1.5"/>
+<circle cx="672.6" cy="248.4" r="1.5"/>
+<circle cx="689.9" cy="242.6" r="1.5"/>
+<circle cx="707.2" cy="240.6" r="1.5"/>
+<circle cx="724.4" cy="237.5" r="1.5"/>
+<circle cx="741.7" cy="234.6" r="1.5"/>
+<circle cx="759.0" cy="230.2" r="1.5"/>
+<circle cx="776.3" cy="228.9" r="1.5"/>
+<circle cx="793.5" cy="227.6" r="1.5"/>
+<circle cx="810.8" cy="226.5" r="1.5"/>
+<circle cx="828.1" cy="221.0" r="1.5"/>
+<circle cx="845.3" cy="223.5" r="1.5"/>
+<circle cx="862.6" cy="217.3" r="1.5"/>
+<circle cx="879.9" cy="214.2" r="1.5"/>
+<circle cx="897.1" cy="209.6" r="1.5"/>
+<circle cx="914.4" cy="210.9" r="1.5"/>
+<circle cx="931.7" cy="209.9" r="1.5"/>
+<circle cx="949.0" cy="207.2" r="1.5"/>
+<circle cx="966.2" cy="205.4" r="1.5"/>
+<circle cx="983.5" cy="204.8" r="1.5"/>
+<circle cx="1000.8" cy="203.0" r="1.5"/>
+<circle cx="1018.0" cy="201.8" r="1.5"/>
+<circle cx="1035.3" cy="201.1" r="1.5"/>
+<circle cx="1052.6" cy="198.9" r="1.5"/>
+<circle cx="1069.8" cy="197.2" r="1.5"/>
+<circle cx="1087.1" cy="196.7" r="1.5"/>
+<circle cx="1104.4" cy="193.1" r="1.5"/>
+<circle cx="1121.7" cy="194.0" r="1.5"/>
+<circle cx="1138.9" cy="193.9" r="1.5"/>
+<circle cx="1156.2" cy="193.4" r="1.5"/>
+<circle cx="1173.5" cy="189.4" r="1.5"/>
+<circle cx="1190.7" cy="191.8" r="1.5"/>
+<circle cx="1208.0" cy="189.8" r="1.5"/>
+</g>
+<path d="M120.0,401.0L125.5,399.6L130.9,398.2L136.4,396.7L141.9,395.3L147.3,393.8L152.8,392.4L158.3,390.9L163.7,389.5L169.2,388.0L174.7,386.6L180.1,385.2L185.6,383.7L191.1,382.3L196.5,380.8L202.0,379.4L207.5,377.9L212.9,376.5L218.4,375.1L223.9,373.6L229.3,372.2L234.8,370.7L240.3,369.3L245.7,367.8L251.2,366.4L256.7,365.0L262.2,363.5L267.6,362.1L273.1,360.6L278.6,359.2L284.0,357.7L289.5,356.3L295.0,354.9L300.4,353.4L305.9,352.0L311.4,350.5L316.8,349.1L322.3,347.7L327.8,346.2L333.2,344.8L338.7,343.3L344.2,341.9L349.6,340.5L355.1,339.0L360.6,337.6L366.0,336.1L371.5,334.7L377.0,333.3L382.4,331.8L387.9,330.4L393.4,329.0L398.8,327.5L404.3,326.1L409.8,324.7L415.2,323.2L420.7,321.8L426.2,320.4L431.6,319.0L437.1,317.5L442.6,316.1L448.0,314.7L453.5,313.2L459.0,311.8L464.4,310.4L469.9,309.0L475.4,307.6L480.8,306.2L486.3,304.7L491.8,303.3L497.2,301.9L502.7,300.5L508.2,299.1L513.6,297.7L519.1,296.3L524.6,294.9L530.1,293.5L535.5,292.1L541.0,290.7L546.5,289.3L551.9,287.9L557.4,286.6L562.9,285.2L568.3,283.8L573.8,282.5L579.3,281.1L584.7,279.7L590.2,278.4L595.7,277.0L601.1,275.7L606.6,274.4L612.1,273.0L617.5,271.7L623.0,270.4L628.5,269.1L633.9,267.8L639.4,266.5L644.9,265.2L650.3,263.9L655.8,262.7L661.3,261.4L666.7,260.2L672.2,258.9L677.7,257.7L683.1,256.5L688.6,255.3L694.1,254.1L699.5,252.9L705.0,251.7L710.5,250.6L715.9,249.4L721.4,248.3L726.9,247.1L732.3,246.0L737.8,244.9L743.3,243.8L748.7,242.8L754.2,241.7L759.7,240.7L765.1,239.6L770.6,238.6L776.1,237.6L781.5,236.6L787.0,235.6L792.5,234.6L797.9,233.7L803.4,232.8L808.9,231.8L814.4,230.9L819.8,230.0L825.3,229.1L830.8,228.3L836.2,227.4L841.7,226.6L847.2,225.7L852.6,224.9L858.1,224.1L863.6,223.3L869.0,222.6L874.5,221.8L880.0,221.0L885.4,220.3L890.9,219.6L896.4,218.8L901.8,218.1L907.3,217.4L912.8,216.8L918.2,216.1L923.7,215.4L929.2,214.8L934.6,214.1L940.1,213.5L945.6,212.9L951.0,212.3L956.5,211.7L962.0,211.1L967.4,210.5L972.9,209.9L978.4,209.4L983.8,208.8L989.3,208.3L994.8,207.7L1000.2,207.2L1005.7,206.7L1011.2,206.1L1016.6,205.6L1022.1,205.1L1027.6,204.6L1033.0,204.1L1038.5,203.7L1044.0,203.2L1049.4,202.7L1054.9,202.3L1060.4,201.8L1065.8,201.4L1071.3,200.9L1076.8,200.5L1082.3,200.1L1087.7,199.6L1093.2,199.2L1098.7,198.8L1104.1,198.4L1109.6,198.0L1115.1,197.6L1120.5,197.2L1126.0,196.8L1131.5,196.4L1136.9,196.1L1142.4,195.7L1147.9,195.3L1153.3,195.0L1158.8,194.6L1164.3,194.3L1169.7,193.9L1175.2,193.6L1180.7,193.2L1186.1,192.9L1191.6,192.5L1197.1,192.2L1202.5,191.9L1208.0,191.6" fill="none" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="11.5" letter-spacing="0.6">
+<circle cx="128" cy="192" r="3.5" fill="#0E7490"/>
+<text x="142" y="197" fill="#4A5561">CH2&#160;&#160;single-diode fit</text>
+<circle cx="128" cy="214" r="3.5" fill="#B45309"/>
+<text x="142" y="219" fill="#4A5561">CH1&#160;&#160;measured</text>
+<text x="128" y="246" fill="#6B7684" font-size="10" letter-spacing="0.9">fit:&#160;&#160;Is = 1 nA&#160;&#160;&#160;n = 1.80&#160;&#160;&#160;Rs = 2.5 &#937;</text>
+</g>
+<rect x="-100.0" y="166" width="220.0" height="186" fill="url(#sweepBand)"><animate attributeName="x" dur="8.0s" repeatCount="indefinite" keyTimes="0;0.82;1" values="-100.0;1208;1208"/></rect>
+<line y1="182" y2="336" stroke="#0E7490" stroke-width="1" stroke-opacity="0.7"><animate attributeName="x1" dur="8.0s" repeatCount="indefinite" keyTimes="0;0.82;1" values="120;1208;1208"/><animate attributeName="x2" dur="8.0s" repeatCount="indefinite" keyTimes="0;0.82;1" values="120;1208;1208"/><animate attributeName="opacity" dur="8.0s" repeatCount="indefinite" keyTimes="0;0.82;0.85;1" values="0.75;0.75;0;0"/></line>
+<circle r="4" fill="#0E7490">
+<animate attributeName="cx" dur="8.0s" repeatCount="indefinite" keyTimes="0;0.02562;0.05125;0.07687;0.1025;0.1281;0.1537;0.1794;0.205;0.2306;0.2562;0.2819;0.3075;0.3331;0.3587;0.3844;0.41;0.4356;0.4612;0.4869;0.5125;0.5381;0.5637;0.5894;0.615;0.6406;0.6663;0.6919;0.7175;0.7431;0.7687;0.7944;0.82" values="120.0;152.8;185.6;223.9;256.7;289.5;322.3;360.6;393.4;426.2;459.0;491.8;530.1;562.9;595.7;628.5;666.7;699.5;732.3;765.1;797.9;836.2;869.0;901.8;934.6;967.4;1005.7;1038.5;1071.3;1104.1;1142.4;1175.2;1208.0"/>
+<animate attributeName="cy" dur="8.0s" repeatCount="indefinite" keyTimes="0;0.02562;0.05125;0.07687;0.1025;0.1281;0.1537;0.1794;0.205;0.2306;0.2562;0.2819;0.3075;0.3331;0.3587;0.3844;0.41;0.4356;0.4612;0.4869;0.5125;0.5381;0.5637;0.5894;0.615;0.6406;0.6663;0.6919;0.7175;0.7431;0.7687;0.7944;0.82" values="401.0;392.4;383.7;373.6;365.0;356.3;347.7;337.6;329.0;320.4;311.8;303.3;293.5;285.2;277.0;269.1;260.2;252.9;246.0;239.6;233.7;227.4;222.6;218.1;214.1;210.5;206.7;203.7;200.9;198.4;195.7;193.6;191.6"/>
+<animate attributeName="opacity" dur="8.0s" repeatCount="indefinite" keyTimes="0;0.82;0.85;1" values="0.95;0.95;0;0"/>
+</circle>
+</g>
+<g font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10" font-weight="500" letter-spacing="0.8">
+<text x="96" y="170" fill="#4A5561" text-anchor="end">I / mA &#183; log</text>
+<text x="96" y="339.5" fill="#6B7684" text-anchor="end">0.1</text>
+<text x="96" y="288.2" fill="#6B7684" text-anchor="end">1</text>
+<text x="96" y="236.8" fill="#6B7684" text-anchor="end">10</text>
+<text x="96" y="185.5" fill="#6B7684" text-anchor="end">100</text>
+<text x="56" y="378" fill="#4A5561">V &#8594;</text>
+<text x="120.0" y="378" fill="#6B7684" text-anchor="middle">0.4</text>
+<text x="301.3" y="378" fill="#6B7684" text-anchor="middle">0.5</text>
+<text x="482.7" y="378" fill="#6B7684" text-anchor="middle">0.6</text>
+<text x="664.0" y="378" fill="#6B7684" text-anchor="middle">0.7</text>
+<text x="845.3" y="378" fill="#6B7684" text-anchor="middle">0.8</text>
+<text x="1026.7" y="378" fill="#6B7684" text-anchor="middle">0.9</text>
+<text x="1208.0" y="378" fill="#6B7684" text-anchor="middle">1.0</text>
+</g>
+</svg>

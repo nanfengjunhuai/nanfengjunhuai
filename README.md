@@ -1,6 +1,8 @@
 <div align="center">
-  <img src="assets/hero-dark.svg#gh-dark-mode-only" alt="nanfeng — physics and optoelectronics to math modeling and AI agents, drawn as a semilog diode I-V sweep with a fitted model" width="100%">
-  <img src="assets/hero-light.svg#gh-light-mode-only" alt="nanfeng — physics and optoelectronics to math modeling and AI agents, drawn as a semilog diode I-V sweep with a fitted model" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+    <img src="assets/hero-light.svg" alt="nanfeng — physics and optoelectronics to math modeling and AI agents, drawn as a semilog diode I-V sweep with a fitted model" width="100%">
+  </picture>
 </div>
 
 <br>
@@ -36,8 +38,10 @@
 ## stack
 
 <div align="center">
-  <img src="assets/stack-dark.svg#gh-dark-mode-only" alt="tech stack: Python, JavaScript, Git, GitHub, Linux, Bash, VS Code, LaTeX, MATLAB" width="100%">
-  <img src="assets/stack-light.svg#gh-light-mode-only" alt="tech stack: Python, JavaScript, Git, GitHub, Linux, Bash, VS Code, LaTeX, MATLAB" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
+    <img src="assets/stack-light.svg" alt="tech stack: Python, JavaScript, Git, GitHub, Linux, Bash, VS Code, LaTeX, MATLAB" width="100%">
+  </picture>
 </div>
 
 <br>
@@ -65,10 +69,14 @@
 ## stats
 
 <div align="center">
-  <img src="assets/stats-dark.svg#gh-dark-mode-only" alt="public repos, contributions, top language, days building" width="100%">
-  <img src="assets/stats-light.svg#gh-light-mode-only" alt="public repos, contributions, top language, days building" width="100%">
-  <img src="assets/langs-dark.svg#gh-dark-mode-only" alt="language distribution by tracked bytes" width="100%">
-  <img src="assets/langs-light.svg#gh-light-mode-only" alt="language distribution by tracked bytes" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
+    <img src="assets/stats-light.svg" alt="public repos, contributions, top language, days building" width="100%">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/langs-dark.svg">
+    <img src="assets/langs-light.svg" alt="language distribution by tracked bytes" width="100%">
+  </picture>
 </div>
 
 <br>

@@ -152,9 +152,46 @@ hero 上那条曲线不是装饰波纹，是**解出来的器件模型**。摆�
 
 ---
 
-## 7. 双主题接线
+## 7. 双主题接线（已实测，非推测）
 
-见 `README.md` 顶部与 `.preview/` 下的对比页。渲染机制经实测选定，结论见
-§7 末。
+**机制：`<picture>` + `<source media="(prefers-color-scheme: dark)">`，路径用相对写法。**
+`README.md` 里每个有浅/深两版的资产都按这个结构写。
 
-（待探测分支结论回填）
+当时的候选是两套写法，网上说法互相矛盾，所以做了实测（2026-09-29）：
+
+1. 先用 `POST /markdown` 跑 GitHub **自己的**渲染管线，确认清洗器**保留**
+   `<picture>` / `<source>`，也保留 `#gh-dark-mode-only` 这类 fragment。
+2. 但 markdown API **不做**相对路径改写（那是页面级行为，不是渲染 API 的行为），
+   所以只证明"没被吃掉"，不证明"路径能解析"。
+3. 于是推 `design/instrument-v2` 分支、抓
+   `blob/<branch>/README.md` 的渲染结果复核。结论：
+   `<img src>` **和** `<picture><source srcset>` 里的相对路径**都会被改写成同源**
+   `/owner/repo/raw/<branch>/...`。网上说的"picture 不改写相对路径"已经不成立。
+
+**所以最终选 `<picture>` 而不是 fragment 语法**，三条理由：
+
+- fragment 语法已被标记废弃，哪天移除就是两张图同时出现。
+- `<picture>` 是浏览器原生行为，不依赖 GitHub 去翻译 fragment。
+- GitHub 会在根元素上设 `color-scheme`，而 `prefers-color-scheme` 取的是父元素的
+  **used color scheme**，所以"手动切成深色但系统是浅色"这种错配不会发生。
+
+**路径坚持相对写法**，不用绝对 `raw.githubusercontent.com`：相对路径会被改写成同源
+`github.com/...`，在用户网络下可达；绝对地址则依赖 GitHub 的 camo 代理是否介入，
+不稳。§8 记录了这条网络约束。
+
+---
+
+## 8. 构建环境约束（会直接影响脚本能否跑通）
+
+- **直连 GitHub 不稳定。** 该网络下 `github.com` / `api.github.com` 的直连会**间歇性**
+  失败（实测 `api.github.com` 约 6 次里失败 1 次，`UNEXPECTED_EOF_WHILE_READING`；
+  有时直连会整段失效）。这是 `render.py` 加**重试退避**的原因——不是为了防御性编程，
+  是因为单次抖动会让整张卡拿到空数据。
+- **本地有代理，但只有 git 读得到。** `git config` 里配了
+  `http.https://github.com.proxy = http://127.0.0.1:7993`，所以 `git push` / `gh` 能通，
+  而 `curl` 默认不读这个配置、走直连会失败。**手动用 curl 抓 GitHub 时加
+  `-x http://127.0.0.1:7993`。**
+- **`*.vercel.app` 整片不可达**，这是所有卡片都自绘自托管的根本原因。
+- **不要把 Python 的 `/tmp` 当 Git Bash 的 `/tmp`。** MSYS 会转换命令行参数里的 POSIX
+  路径，但**不会**转换 heredoc / 脚本里的字符串字面量，两者会指到不同目录。
+  调试脚本一律用仓库内相对路径。

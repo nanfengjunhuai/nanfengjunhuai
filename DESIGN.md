@@ -136,6 +136,8 @@ hero 上那条曲线不是装饰波纹，是**解出来的器件模型**。摆�
 `scripts/make_hero.py` 生成，几何只写一次，调色板作参数。
 `scripts/shot.py` 走本地 Chrome 无头截图，让每一步视觉改动都能**真的看一眼**，
 而不是盲写坐标。截图落在 gitignore 掉的 `.preview/`。
+仓库根目录的 `preview.html` 双击即可打开，把四张资产按 GitHub README 实际栏宽
+并排铺在深色与浅色两种 GitHub 底色上，是推送前唯一的整体验收入口。
 
 ---
 

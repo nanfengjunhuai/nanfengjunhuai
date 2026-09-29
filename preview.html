@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+  preview.html — look at the generated assets on both GitHub backgrounds,
+  at GitHub's real README column width, before pushing anything.
+
+  Just open this file in a browser. No server, no build step, no dependencies.
+
+  Scope is deliberately narrow: it shows the ASSETS, not the README prose.
+  The markdown body renders predictably and does not need eyeballing, whereas
+  the SVGs are hand-tuned against contrast and alignment and absolutely do.
+  Duplicating the README text in here would only give it a second place to
+  drift out of sync.
+
+  Reminder if a pane looks stale: the SVGs are generated. Re-run
+      python scripts/make_hero.py && python scripts/make_stack.py
+      python scripts/render.py
+  then reload.
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>profile preview — both themes</title>
+<style>
+  :root {
+    --page-bg: #1c2128;
+    --page-fg: #adbac7;
+    --gap: 28px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 28px var(--gap) 64px;
+    background: var(--page-bg);
+    color: var(--page-fg);
+    font: 14px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+          Helvetica, Arial, sans-serif;
+  }
+  header { max-width: 1780px; margin: 0 auto var(--gap); }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 6px; color: #cdd9e5; }
+  p.note { margin: 0; font-size: 12.5px; max-width: 900px; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.92em;
+    background: #2d333b;
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .panes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    max-width: 1780px;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+  /* Each pane reproduces GitHub's own README column: a fixed content width
+     with real chrome around it, so scale and breathing room match the site.
+     850px is close to GitHub's default README column, and it keeps the pair
+     side by side (850*2 + gap + page padding fits inside a 1920 window)
+     instead of wrapping — which would hide one of them below the fold. */
+  .pane {
+    width: 850px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #444c56;
+  }
+  .pane > .bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .swatch {
+    width: 11px; height: 11px;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,.25);
+  }
+  .pane > .body { padding: 24px 32px 32px; }
+  .pane img { display: block; width: 100%; height: auto; }
+  .pane .item { margin: 0 0 20px; }
+  .pane .item:last-child { margin-bottom: 0; }
+  .pane .lbl {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    margin: 0 0 6px;
+    opacity: .62;
+  }
+
+  .dark  { background: #0d1117; border-color: #30363d; }
+  .dark  > .bar { background: #161b22; color: #8b949e; border-bottom: 1px solid #30363d; }
+  .dark  > .body { color: #e6edf3; }
+  .dark  .lbl { color: #8b949e; }
+
+  .light { background: #ffffff; border-color: #d1d9e0; }
+  .light > .bar { background: #f6f8fa; color: #59636e; border-bottom: 1px solid #d1d9e0; }
+  .light > .body { color: #1f2328; }
+  .light .lbl { color: #59636e; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>profile preview — both themes</h1>
+  <p class="note">
+    每张 SVG 同时放在 GitHub 深色（<code>#0d1117</code>）和浅色（<code>#ffffff</code>）底色上，
+    内容宽度按 GitHub README 实际栏宽。<code>preview.html</code> 只看**图形资产**，
+    正文 markdown 不在这里重复（GitHub 渲染它是可预测的，而这些 SVG 的对比度和对齐是手调的，
+    必须用眼睛验收）。改图后重跑 <code>scripts/make_hero.py</code> /
+    <code>make_stack.py</code> / <code>render.py</code> 再刷新本页。
+  </p>
+</header>
+
+<div class="panes">
+
+  <section class="pane dark">
+    <div class="bar"><span class="swatch" style="background:#0d1117"></span>github dark</div>
+    <div class="body">
+      <div class="item"><p class="lbl">hero-dark.svg</p><img src="assets/hero-dark.svg" alt="hero, dark theme"></div>
+      <div class="item"><p class="lbl">stack-dark.svg</p><img src="assets/stack-dark.svg" alt="stack, dark theme"></div>
+      <div class="item"><p class="lbl">stats-dark.svg</p><img src="assets/stats-dark.svg" alt="stats, dark theme"></div>
+      <div class="item"><p class="lbl">langs-dark.svg</p><img src="assets/langs-dark.svg" alt="languages, dark theme"></div>
+    </div>
+  </section>
+
+  <section class="pane light">
+    <div class="bar"><span class="swatch" style="background:#ffffff"></span>github light</div>
+    <div class="body">
+      <div class="item"><p class="lbl">hero-light.svg</p><img src="assets/hero-light.svg" alt="hero, light theme"></div>
+      <div class="item"><p class="lbl">stack-light.svg</p><img src="assets/stack-light.svg" alt="stack, light theme"></div>
+      <div class="item"><p class="lbl">stats-light.svg</p><img src="assets/stats-light.svg" alt="stats, light theme"></div>
+      <div class="item"><p class="lbl">langs-light.svg</p><img src="assets/langs-light.svg" alt="languages, light theme"></div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

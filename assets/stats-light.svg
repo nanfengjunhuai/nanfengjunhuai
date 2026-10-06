@@ -30,7 +30,7 @@
   <g>
     <rect x="648.0" y="60" width="1" height="76" fill="#0E7490" fill-opacity="0.55"/>
     <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" font-weight="600" letter-spacing="1.5" x="660.0" y="76" fill="#6B7684">DAYS BUILDING</text>
-    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="30" font-weight="700" x="660.0" y="114" fill="#0B0E14">112</text>
+    <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="30" font-weight="700" x="660.0" y="114" fill="#0B0E14">113</text>
     <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" x="660.0" y="134" fill="#6B7684">since 2026/06</text>
   </g>
   <text font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace' font-size="10.5" x="24" y="162" fill="#6B7684">rendered from the GitHub API &#183; refreshed daily by scripts/render.py</text>
